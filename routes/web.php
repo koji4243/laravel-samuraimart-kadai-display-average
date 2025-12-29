@@ -41,11 +41,12 @@ require __DIR__.'/auth.php';
         Route::get('users/mypage/password/edit', 'edit_password')->name('mypage.edit_password');
         Route::put('users/mypage/password', 'update_password')->name('mypage.update_password');  
         Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
+        Route::delete('users/mypage/delete', 'destroy')->name('mypage.destroy');
     });
         Route::controller(CartController::class)->group(function () {
-        Route::get('users/carts', 'index')->name('carts.index');    Route::post('users/carts', 'store')->name('carts.store');
+        Route::get('users/carts', 'index')->name('carts.index');   
+        Route::post('users/carts', 'store')->name('carts.store');
         Route::post('users/carts', 'store')->name('carts.store');
         Route::delete('users/carts', 'destroy')->name('carts.destroy');
-        Route::delete('users/mypage/delete', 'destroy')->name('mypage.destroy');
     });
 // });
