@@ -13,15 +13,26 @@
                 <div class="col-4">
                     <a href="{{ route('products.show', $recommend_product) }}">
                         @if ($recommend_product->image !== "")
-                        <img src="{{ asset($recommend_product->image) }}" class="img-thumbnail">
+                            <img src="{{ asset($recommend_product->image) }}" class="img-thumbnail">
                         @else
-                        <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                            <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
                         @endif
                     </a>
                     <div class="row">
                         <div class="col-12">
                             <p class="samuraimart-product-label mt-2">
                                 {{ $recommend_product->name }}<br>
+                                @foreach ($recommend_product->reviews as $review )
+                                    @php 
+                                        $avg = round($recommend_product->reviews->avg('score') * 2) / 2
+                                    @endphp
+                                    <span
+                                        class="stars-rating"
+                                        data-rate="{{ $avg }}">
+                                    </span>
+                                    <span>{{ number_format($recommend_product->reviews->avg('score'), 1) }}</span><br>
+                                        @break
+                                @endforeach
                                 <label>￥{{ $recommend_product->price }}</label>
                             </p>
                         </div>
@@ -48,6 +59,14 @@
                         <div class="col-12">
                             <p class="samuraimart-product-label mt-2">
                                 {{ $recently_product->name }}<br>
+                                @php 
+                                    $avg = round($recently_product->reviews->avg('score') * 2) / 2
+                                @endphp
+                                <span
+                                    class="stars-rating"
+                                    data-rate="{{ $avg }}">
+                                </span>
+                                <span>{{ number_format($recently_product->reviews->avg('score'), 1) }}</span><br>
                                 <label>￥{{ $recently_product->price }}</label>
                             </p>
                         </div>

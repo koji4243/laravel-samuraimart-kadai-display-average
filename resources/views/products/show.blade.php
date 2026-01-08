@@ -16,6 +16,17 @@
                 <h1 class="">
                     {{$product->name}}
                 </h1>
+
+                @php 
+                    $avg = round($reviews->avg('score') * 2) / 2
+                @endphp
+                <pre>{{ $avg }}</pre>
+                <span
+                    class="stars-rating"
+                    data-rate="{{ $avg }}">
+                </span>
+                <span>{{ number_format($reviews->avg('score'), 1) }}</span><br>
+
                 <p class="">
                     {{$product->description}}
                 </p>

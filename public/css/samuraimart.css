@@ -183,3 +183,76 @@ th,
 td {
     background-color: #f8fafc !important;
 }
+.stars-rating {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* 背面：灰色の星 */
+.stars-rating::before {
+    content: "★★★★★";
+    color: #ccc;
+}
+
+/* 前面：緑色の星 */
+.stars-rating::after {
+    content: "★★★★★";
+    color: #0fbe9f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+.stars-rating[data-rate="5.0"]::after {
+    width: 100%;
+}
+.stars-rating[data-rate="4.5"]::after {
+    width: 90%;
+}
+.stars-rating[data-rate="4.0"]::after {
+    width: 80%;
+}
+.stars-rating[data-rate="3.5"]::after {
+    width: 70%;
+}
+.stars-rating[data-rate="3.0"]::after {
+    width: 60%;
+}
+.stars-rating[data-rate="2.5"]::after {
+    width: 50%;
+}
+.stars-rating[data-rate="2.0"]::after {
+    width: 40%;
+}
+.stars-rating[data-rate="1.5"]::after {
+    width: 30%;
+}
+.stars-rating[data-rate="1.0"]::after {
+    width: 20%;
+}
+.stars-rating[data-rate="0.5"]::after {
+    width: 10%;
+}
+.stars-rating[data-rate="0.0"]::after {
+    width: 0%;
+}
+
+.stars-rating[data-rate="1"]::after {
+    width: 20%;
+}
+.stars-rating[data-rate="2"]::after {
+    width: 40%;
+}
+.stars-rating[data-rate="3"]::after {
+    width: 60%;
+}
+.stars-rating[data-rate="4"]::after {
+    width: 80%;
+}
+.stars-rating[data-rate="5"]::after {
+    width: 100%;
+}

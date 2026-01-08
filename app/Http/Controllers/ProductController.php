@@ -31,7 +31,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $major_categories = MajorCategory::all();
         
-        return view('products.index', compact('products', 'category', 'major_category', 'categories', 'major_categories', 'total_count', 'keyword'));
+        $reviewScores = Product::with('reviews')->get();
+
+        return view('products.index', compact('products', 'category', 'major_category', 'categories', 'major_categories', 'total_count', 'keyword', 'reviewScores'));
     }
 
     public function create()

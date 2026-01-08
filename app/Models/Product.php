@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use App\Models\Review;
 
 class Product extends Model
 {
@@ -25,7 +26,7 @@ class Product extends Model
     
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'product_id', 'id');
     }
     public function favorited_users() {
         return $this->belongsToMany(User::class)->withTimestamps();
