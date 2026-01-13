@@ -8,6 +8,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\CheckoutController;
 
 
@@ -28,7 +29,7 @@ Route::get('/',  [WebController::class, 'index'])->name('top');
 
 require __DIR__.'/auth.php';
 
-// Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('products', ProductController::class);
 
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
@@ -59,4 +60,5 @@ require __DIR__.'/auth.php';
         Route::get('checkout/success', 'success')->name('checkout.success');
     });
 });
-// });
+});
+Route::get('faqs',  [FaqController::class, 'index'])->name('faqs.index');
